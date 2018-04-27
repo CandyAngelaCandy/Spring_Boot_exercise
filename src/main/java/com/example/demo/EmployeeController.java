@@ -10,9 +10,9 @@ import java.util.*;
 public class EmployeeController {
 
     // 创建线程安全的Map
-    static Map<Long, Employee> employees = Collections.synchronizedMap(new HashMap<Long, Employee>());
+    static Map<Long, Employee> employees = Collections.synchronizedMap(new HashMap<>());
 
-    @RequestMapping(value = "/",method = RequestMethod.GET)
+    @RequestMapping(value = "",method = RequestMethod.GET)
     public List<Employee> getEmployeeList() {
         //处理"/employees/"的GET请求，用来获取employee列表
         // 还可以通过@RequestParam从页面中传递参数来进行查询条件或者翻页信息的传递
@@ -63,7 +63,7 @@ public class EmployeeController {
         e.setName(employee.getName());
         e.setAge(employee.getAge());
         e.setGender(employee.getGender());
-        
+
         employees.put(id, e);
         return "success";
     }
